@@ -1,7 +1,6 @@
 package jp.park.android_compose_practice.ui.theme
 
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.BorderColor
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -10,8 +9,6 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -24,7 +21,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 
 sealed class BottomNavItem(val route: String, val title: String, val icon: ImageVector) {
-    object Study1 : BottomNavItem("video_list", "リスト学習", Icons.Default.BorderColor)
+    object Study1 : BottomNavItem("study1", "ビデオリスト", Icons.Default.BorderColor)
     object Study2 : BottomNavItem("study2", "Study2", Icons.Default.BorderColor)
     object Study3 : BottomNavItem("study3", "Study3", Icons.Default.BorderColor)
 }
@@ -43,16 +40,6 @@ fun MainScreen() {
     )
 
     Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text("Compose study app") },
-                modifier = Modifier.statusBarsPadding(),
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color.White,
-                    titleContentColor = Color.Black
-                )
-            )
-        },
         bottomBar = {
             NavigationBar(
                 containerColor = Color.White
