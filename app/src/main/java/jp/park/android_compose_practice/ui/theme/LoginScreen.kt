@@ -173,7 +173,7 @@ private fun PasswordField(
 ) {
     Column {
         Text(
-            text = "비밀번호",
+            text = "Password",
             fontWeight = FontWeight.SemiBold
         )
 
@@ -184,7 +184,7 @@ private fun PasswordField(
             onValueChange = onPasswordChange,
             modifier = Modifier.fillMaxWidth(),
             placeholder = {
-                Text("비밀번호를 입력하세요")
+                Text("パスワードを入力してください。")
             },
             leadingIcon = {
                 Icon(Icons.Outlined.Lock, null)
