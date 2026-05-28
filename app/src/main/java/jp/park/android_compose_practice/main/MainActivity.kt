@@ -15,7 +15,7 @@ import jp.park.android_compose_practice.ui.theme.MainScreen
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+
         setContent {
             AndroidcomposepracticeTheme {
                 val navController = rememberNavController()
