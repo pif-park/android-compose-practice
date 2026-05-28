@@ -10,10 +10,12 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -22,7 +24,7 @@ import androidx.navigation.compose.rememberNavController
 
 sealed class BottomNavItem(val route: String, val title: String, val icon: ImageVector) {
     object Study1 : BottomNavItem("study1", "ビデオリスト", Icons.Default.BorderColor)
-    object Study2 : BottomNavItem("study2", "Study2", Icons.Default.BorderColor)
+    object Study2 : BottomNavItem("study2", "マイページ", Icons.Default.BorderColor)
     object Study3 : BottomNavItem("study3", "Study3", Icons.Default.BorderColor)
 }
 
@@ -70,15 +72,23 @@ fun MainScreen() {
                 }
             }
         }
-    ) { innerPadding ->
+    ) { _ ->
         NavHost(
             navController = bottomNavController,
-            startDestination = BottomNavItem.Study1.route,
-            modifier = Modifier.padding(innerPadding)
+            startDestination = BottomNavItem.Study1.route
         ) {
             composable(BottomNavItem.Study1.route) { VideoListScreen() }
-            composable(BottomNavItem.Study2.route) { VideoListScreen() }
+            composable(BottomNavItem.Study2.route) { MyPageScreen() }
             composable(BottomNavItem.Study3.route) { VideoListScreen() }
         }
     }
+}
+
+@Preview(
+    showBackground = true,
+    showSystemUi = true
+)
+@Composable
+fun MainScreenPreview() {
+    MainScreen()
 }
